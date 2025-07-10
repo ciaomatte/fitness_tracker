@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Fitness Tracker</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+ <!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <a class="navbar-brand" href="/">Fitness Tracker</a>
+    <div class="navbar-buttons">
+      {% if user.is_authenticated %}
+        <span>Ciao, {{ user.username }}</span>
+        <a href="{% url 'feed' %}" class="btn outline">Feed</a>
+        <a href="{% url 'my_workouts' %}" class="btn outline">I miei Workouts</a>
+        <a href="{% url 'personal_sheet' %}" class="btn outline">Scheda Personale</a>
+        <a href="{% url 'search_users' %}" class="btn outline">Gestisci amici</a>
+        <a href="{% url 'my_goals' %}" class="btn outline">I tuoi obiettivi</a>
+
+
+        {% if user.is_coach %}
+          <a href="{% url 'manage_goals' %}" class="btn outline">Gestisci Obiettivi</a>
+        {% endif %}
+
+        <a href="{% url 'logout' %}" class="btn danger">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="btn outline">Login</a>
+        <a href="{% url 'signup' %}" class="btn primary">Signup</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+  <!-- Messaggi flash -->
+ <!--- {% if messages %}
+    <div style="margin-top: 1rem; text-align: center;">
+      {% for message in messages %}
+        <p style="color: #777; font-style: italic; margin-bottom: 0.5rem;">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %} -->
+
+  <!-- Contenuto principale -->
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

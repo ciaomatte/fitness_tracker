@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="search-container">
+    <h2 class="page-title">Gestisci amici e coach</h2>
+
+    <form method="post" class="search-form">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+      </div>
+      <button type="submit" class="btn search-btn">Cerca</button>
+    </form>
+
+    {% if messages %}
+      <div class="message-area">
+        {% for message in messages %}
+          <p class="message">{{ message }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if result %}
+      <div class="result-card">
+        <p class="result-username">Username trovato: <strong>{{ result.username }}</strong></p>
+
+        {% if result != user %}
+          <div class="button-group">
+            <form method="post" action="{% url 'toggle_friend' result.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn {% if is_friend %}btn-danger{% else %}btn-primary{% endif %}">
+                {% if is_friend %}Rimuovi Amico{% else %}Aggiungi Amico{% endif %}
+              </button>
+            </form>
+
+            {% if result.is_coach %}
+              <form method="post" action="{% url 'toggle_coach' result.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn {% if is_coach %}btn-danger{% else %}btn-primary{% endif %}">
+                  {% if is_coach %}Rimuovi Coach{% else %}Aggiungi Coach{% endif %}
+                </button>
+              </form>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

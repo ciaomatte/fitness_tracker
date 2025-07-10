@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <h2>I tuoi obiettivi</h2>
+
+  {% if coach %}
+    <p>👤 Il tuo coach è <strong>{{ coach.username }}</strong></p>
+  {% endif %}
+
+  {% if target_weight %}
+    <div class="goals-section">
+      <div class="goals-title">⚖️ Peso Obiettivo</div>
+      <div class="goal-item">
+        <span class="goal-label">Attuale:</span>
+        <span>{{ current_weight }} kg</span>
+      </div>
+      <div class="goal-item">
+        <span class="goal-label">Obiettivo:</span>
+        <span>{{ target_weight }} kg</span>
+      </div>
+      <div class="goal-item">
+        <span class="goal-label">Stato:</span>
+        <span class="goal-status {% if weight_status == '✅ Completato' %}success{% else %}progress{% endif %}">
+          {{ weight_status }}
+        </span>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if activity_goals %}
+    <div class="goals-section">
+      <div class="goals-title">⏱️ Obiettivi Attività</div>
+
+      {% for goal in activity_goals %}
+        <div class="goal-item">
+          <span class="goal-label">{{ goal.label }}</span>
+          <span>
+            {{ goal.current }} / {{ goal.target }} min —
+            <span class="goal-status {% if goal.status == '✅ Completato' %}success{% else %}progress{% endif %}">
+              {{ goal.status }}
+            </span>
+          </span>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="flash-message">Nessun obiettivo assegnato per ora.</p>
+  {% endif %}
+</div>
+{% endblock %}

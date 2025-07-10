@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <h2>I miei workout</h2>
+    <a href="{% url 'create_workout' %}" class="btn primary">+ Workout</a>
+  </div>
+
+  {% if workouts %}
+    <ul>
+      {% for workout in workouts %}
+        <li>
+          <strong>{{ workout.get_type_display }}</strong> — {{ workout.duration_minutes }} min<br>
+          <em>{{ workout.date }}</em><br>
+          {{ workout.notes }}
+
+          <div style="margin-top: 0.5rem;">
+            <!-- ✅ URL corretta per modifica -->
+            <a href="{% url 'edit_workout' workout.id %}" class="btn primary">Modifica</a>
+
+            <!-- ✅ URL corretta per eliminazione -->
+            <form method="post" action="{% url 'delete_workout' workout.id %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn danger">Elimina</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Non hai ancora inserito nessun workout.</p>
+  {% endif %}
+{% endblock %}

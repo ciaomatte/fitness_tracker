@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="max-width: 800px; margin: auto;">
+
+  <h2 style="margin-bottom: 1rem;">Gestione Obiettivi Atleti</h2>
+
+  {% if messages %}
+    <div class="messages" style="margin-bottom: 1rem;">
+      {% for message in messages %}
+        <p class="flash-message" style="color: #198754; font-style: italic; margin: 0;">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% for athlete in athletes %}
+    <div style="background: #f8f9fa; padding: 1rem; border-left: 4px solid #28a745; border-radius: 6px; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+      <span><strong>{{ athlete.username }}</strong></span>
+      <a href="{% url 'set_goals' athlete.id %}" class="btn primary">Imposta Obiettivi</a>
+    </div>
+  {% empty %}
+    <p>Nessun atleta trovato.</p>
+  {% endfor %}
+
+</div>
+{% endblock %}

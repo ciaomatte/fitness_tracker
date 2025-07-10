@@ -1,0 +1,463 @@
+/* ---------- GENERALE ---------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  background-color: #27ae60;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-buttons a {
+  margin-left: 10px;
+}
+
+/* ---------- BOTTONI ---------- */
+.btn {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease;
+  border: none;
+}
+
+/* Verde pieno */
+.btn.primary {
+  background-color: #27ae60;
+  color: white;
+}
+
+.btn.primary:hover {
+  background-color: #1e874b;
+}
+
+/* Bordo bianco trasparente (usato in navbar per login/signup) */
+
+/* Bottone outline (trasparente con bordo bianco e testo bianco) */
+.btn.outline {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.btn.outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Rosso per logout o delete */
+.btn.danger {
+  background-color: #c0392b;
+  color: white;
+}
+
+.btn.danger:hover {
+  background-color: #922b21;
+}
+
+/* ---------- CONTENUTO PRINCIPALE ---------- */
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+/* ---------- FORM ---------- */
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form button {
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form button:hover {
+  background-color: #1e874b;
+}
+
+/* ---------- LISTA WORKOUTS ---------- */
+li {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-left: 4px solid #27ae60;
+  margin-bottom: 1rem;
+  list-style: none;
+  border-radius: 5px;
+}
+.messages {
+  margin-bottom: 1rem;
+}
+.flash-message {
+  font-style: italic;
+  color: #999;
+  margin-top: 10px;
+}
+.button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #dff0d8; /* verde chiaro */
+  color: #3c763d;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+.workout-run {
+  border-left: 4px solid #2ecc71;
+}
+
+.workout-swim {
+  border-left: 4px solid #3498db;
+}
+
+.workout-bike {
+  border-left: 4px solid #e67e22;
+}
+.goal-box {
+  background-color: #f9f9f9;
+  border-left: 5px solid #27ae60;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.goal-box h3 {
+  margin-top: 0;
+  color: #27ae60;
+}
+
+.activity-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.activity-label {
+  font-weight: bold;
+  width: 100px;
+}
+.form-card {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn.primary {
+  background-color: #28a745;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.input {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+  .goals-section {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    max-width: 600px;
+  }
+
+  .goals-title {
+    font-weight: bold;
+    color: #28a745;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .goal-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .goal-item:last-child {
+    border-bottom: none;
+  }
+
+  .goal-label {
+    font-weight: bold;
+  }
+
+  .goal-status {
+    color: #555;
+    font-style: italic;
+  }
+
+  .goal-status.success {
+    color: green;
+  }
+
+  .goal-status.progress {
+    color: orange;
+  }
+/* ----- GESTIONE AMICI & COACH ----- */
+.search-form {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-form label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.search-form input[type="text"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-form button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background-color: #1e874b;
+}
+
+.search-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.search-result p {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.search-result form {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.search-result button {
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.search-result .btn.primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.search-result .btn.primary:hover {
+  background-color: #2c80b4;
+}
+
+.search-result .btn.danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.search-result .btn.danger:hover {
+  background-color: #c0392b;
+}
+
+.message-text {
+  font-style: italic;
+  color: #888;
+  margin: 0.5rem 0 1rem;
+}
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.form-group {
+  flex-grow: 1;
+}
+
+.search-btn {
+  padding: 0.6rem 1rem;
+}
+
+.message-area {
+  margin-top: 0.5rem;
+}
+
+.message {
+  font-style: italic;
+  color: #777;
+}
+
+.result-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+.result-username {
+  margin-bottom: 0.75rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #27ae60;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #c0392b;
+  color: white;
+}
+

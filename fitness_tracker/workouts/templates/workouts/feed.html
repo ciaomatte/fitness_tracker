@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Workout degli amici</h2>
+
+{% if workouts %}
+  {% for workout in workouts %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ workout.user.username }} 🏋️</h5>
+        <p class="card-text"><strong>Tipo:</strong> {{ workout.type }}</p>
+        <p class="card-text"><strong>Durata:</strong> {{ workout.duration_minutes }} minuti</p>
+        <p class="card-text"><strong>Data:</strong> {{ workout.date }}</p>
+        {% if workout.notes %}
+          <p class="card-text text-muted">{{ workout.notes }}</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>Nessun workout trovato. Aggiungi amici o aspetta che pubblichino!</p>
+{% endif %}
+
+{% endblock %}
